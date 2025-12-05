@@ -1,4 +1,3 @@
-// Small UI helpers for the tutorial pages
 (() => {
   'use strict';
   document.addEventListener('DOMContentLoaded', () => {
@@ -21,7 +20,6 @@
     markLinks('.toc a');
     markLinks('.sidebar a');
 
-    // Desktop sidebar toggle (collapse/expand)
     const sidebarDesktop = document.querySelector('.sidebar');
     const toggleDesktop = document.querySelector('.sidebar-toggle');
     const mainContent = document.querySelector('.main-content');
@@ -30,18 +28,18 @@
       toggleDesktop.addEventListener('click', () => {
         sidebarDesktop.classList.toggle('sidebar--collapsed');
         if (mainContent) mainContent.classList.toggle('sidebar--collapsed');
-        // Store preference
+
         localStorage.setItem('sidebar-collapsed', sidebarDesktop.classList.contains('sidebar--collapsed'));
       });
       
-      // Restore previous state on load
+
       if (localStorage.getItem('sidebar-collapsed') === 'true') {
         sidebarDesktop.classList.add('sidebar--collapsed');
         if (mainContent) mainContent.classList.add('sidebar--collapsed');
       }
     }
 
-    // Sidebar toggle (mobile)
+
     const sidebar = document.querySelector('.sidebar');
     let overlayEl = null;
 
@@ -66,19 +64,19 @@
       });
     }
 
-    // Close on Escape key
+
     document.addEventListener('keydown', (ev) => {
       if (ev.key === 'Escape') closeSidebar();
     });
 
-    /* Rating widget: 1-5 estrellas */
+
     (function setupRatingWidget(){
       const ratingKey = 'tutorial_rating_votes';
       const ratedFlag = 'tutorial_rated';
       const ratedValueKey = 'tutorial_rated_value';
       const stars = Array.from(document.querySelectorAll('.rating-stars .star'));
       const submitBtn = document.getElementById('submit-rating');
-      // create or attach a "remove rating" button inside the rating actions area
+  
       const ratingActionsContainer = document.querySelector('.rating-actions');
       const removeBtn = document.createElement('button');
       removeBtn.type = 'button';
@@ -87,7 +85,7 @@
       removeBtn.textContent = 'Quitar valoración';
       removeBtn.style.display = 'none';
       if (ratingActionsContainer) {
-        // insert before the summary element if present
+
         const summaryNode = ratingActionsContainer.querySelector('.rating-summary');
         if (summaryNode) ratingActionsContainer.insertBefore(removeBtn, summaryNode);
         else ratingActionsContainer.appendChild(removeBtn);
@@ -110,7 +108,7 @@
         const avg = computeAverage(votes);
         if(avgEl) avgEl.textContent = (votes.length? avg.toFixed(1) + '★' : '—');
         if(countEl) countEl.textContent = `(${votes.length} valoraci${votes.length===1?'ón':'ones'})`;
-        // visually update average stars if needed
+  
         const rounded = Math.round(avg);
         if(stars && stars.length){
           stars.forEach(s => {
@@ -167,7 +165,7 @@
         });
       }
 
-      // Initialize
+
       updateSummary();
       if(localStorage.getItem(ratedFlag)){
         const last = parseInt(localStorage.getItem(ratedValueKey),10) || 0;
@@ -179,16 +177,16 @@
         if(removeBtn) removeBtn.style.display = 'inline-block';
       }
 
-      // Remove rating handler: remove one instance of the user's saved value from votes
+
       if(removeBtn){
         removeBtn.addEventListener('click', ()=>{
           if(!confirm('¿Quieres eliminar tu valoración de este tutorial?')) return;
           const votes = loadVotes();
           const myVal = parseInt(localStorage.getItem(ratedValueKey),10);
-          // remove first matching occurrence (best-effort)
+ 
           const idx = votes.indexOf(myVal);
           if(idx !== -1){ votes.splice(idx,1); saveVotes(votes); }
-          // clear user flags
+
           localStorage.removeItem(ratedFlag);
           localStorage.removeItem(ratedValueKey);
           if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = 'Enviar valoración'; }
@@ -200,11 +198,11 @@
       }
     })();
 
-    /* Comments: submit, render and delete (owner-only) */
+
     (function setupComments(){
       const USER_KEY = 'tutorial_user_id';
       const COMMENTS_KEY = 'tutorial_comments';
-      // create a local user id if not present
+
       let userId = localStorage.getItem(USER_KEY);
       if(!userId){ userId = 'user_' + Date.now() + '_' + Math.floor(Math.random()*10000); localStorage.setItem(USER_KEY, userId); }
 
@@ -216,7 +214,7 @@
 
       function renderComments(){
         let items = loadComments();
-        // apply sort order
+
         const sortOrder = window.getCurrentSortOrder ? window.getCurrentSortOrder() : 'newest';
         if(sortOrder === 'newest'){
           items.sort((a,b)=> b.createdAt - a.createdAt);
@@ -248,7 +246,7 @@
 
           el.appendChild(author); el.appendChild(text); el.appendChild(meta);
 
-          // action buttons: Reply, Edit, Delete
+
           const actions = document.createElement('div'); actions.className = 'comment-actions';
           const replyBtn = document.createElement('button'); replyBtn.type = 'button'; replyBtn.className = 'btn-edit'; replyBtn.textContent = 'Responder';
           actions.appendChild(replyBtn);
@@ -270,7 +268,7 @@
           el.appendChild(actions);
           wrapper.appendChild(el);
 
-          // render nested replies
+  
           if(c.replies && c.replies.length > 0){
             const repliesContainer = document.createElement('div'); repliesContainer.className = 'replies';
             c.replies.sort((a,b)=> a.createdAt - b.createdAt).forEach(reply => {
@@ -285,7 +283,7 @@
 
               replyEl.appendChild(rauthor); replyEl.appendChild(rtext); replyEl.appendChild(rmeta);
 
-              // reply actions (edit, delete for author)
+
               if(reply.ownerId === userId){
                 const ractions = document.createElement('div'); ractions.className = 'comment-actions';
                 const redit = document.createElement('button'); redit.type = 'button'; redit.className = 'btn-edit'; redit.textContent = 'Editar';
@@ -310,7 +308,7 @@
           listEl.appendChild(wrapper);
         });
 
-        // helper: enter edit mode for a comment (text only)
+
         function enterEditMode(comment, containerEl){
           containerEl.innerHTML = '';
           const author = document.createElement('p'); author.className = 'comment-author'; const nameText = document.createElement('strong'); nameText.textContent = comment.name || 'Anónimo'; author.appendChild(nameText);
@@ -338,7 +336,7 @@
           containerEl.appendChild(author); containerEl.appendChild(textarea); controls.appendChild(saveBtn); controls.appendChild(cancelBtn); containerEl.appendChild(controls);
         }
 
-        // helper: enter reply mode for a comment
+
         function enterReplyMode(parentComment, wrapperEl){
           const replyForm = document.createElement('div'); replyForm.style.marginTop = '12px'; replyForm.style.padding = '12px'; replyForm.style.background = 'var(--bg-secondary)'; replyForm.style.borderRadius = '6px';
           
@@ -376,7 +374,7 @@
           wrapperEl.appendChild(replyForm);
         }
 
-        // helper: enter edit reply mode
+
         function enterEditReplyMode(parentComment, reply, replyEl){
           replyEl.innerHTML = '';
           const textarea = document.createElement('textarea'); textarea.placeholder = 'Edita tu respuesta...'; textarea.rows = 3; textarea.style.width = '100%'; textarea.style.padding = '8px'; textarea.style.marginBottom = '8px'; textarea.style.borderRadius = '4px'; textarea.style.border = '1px solid var(--border)'; textarea.style.fontFamily = 'inherit'; textarea.value = reply.text;
@@ -402,7 +400,7 @@
       }
 
       if(form){
-        // Prefill saved name/email
+
         const savedName = localStorage.getItem('tutorial_user_name');
         const savedEmail = localStorage.getItem('tutorial_user_email');
         if(savedName){ const n = form.querySelector('#name'); if(n) n.value = savedName; }
@@ -430,21 +428,21 @@
           };
           comments.push(obj);
           saveComments(comments);
-          // remember name/email for convenience
+       
           try{ localStorage.setItem('tutorial_user_name', name); if(email) localStorage.setItem('tutorial_user_email', email); }catch(e){}
           form.reset();
           renderComments();
-          // scroll to top of comments (newest)
+
           setTimeout(()=>{ const first = listEl.querySelector('.comment'); if(first) first.scrollIntoView({behavior:'smooth'}); },50);
         });
       }
 
-      // initial render
+
       renderComments();
     })();
   });
 
-  // Dark mode toggle
+
   (function setupDarkMode(){
     const toggle = document.getElementById('dark-mode-toggle');
     const darkModeKey = 'tutorial_dark_mode';
@@ -462,13 +460,13 @@
     }
   })();
 
-  // Comments filter and sort
+
   (function setupCommentsFilter(){
     const sortSelect = document.getElementById('sort-comments');
     const listEl = document.getElementById('comments-list');
     const sortKey = 'comments_sort_order';
     
-    // restore saved sort preference
+ 
     const savedSort = localStorage.getItem(sortKey) || 'newest';
     if(sortSelect) sortSelect.value = savedSort;
     
@@ -483,4 +481,5 @@
 
     window.getCurrentSortOrder = ()=> sortSelect ? sortSelect.value : 'newest';
   })();
+
 })();
