@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>3. Primeros pasos</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" aria-label="Navegación del tutorial">
+      <h2>Índice</h2>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="1-justificacion.html">1 — Justificación</a></li>
+          <li><a href="2-instalacion.html">2 — Instalación</a></li>
+          <li><a href="3-primeros-pasos.html">3 — Primeros pasos</a></li>
+          <li><a href="4-utilizacion.html">4 — Utilización</a></li>
+          <li><a href="5-explicacion-funcionamiento.html">5 — Explicación</a></li>
+          <li><a href="6-hola-mundo.html">6 — Hola Mundo</a></li>
+          <li><a href="7-conclusiones.html">7 — Conclusiones</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">Actividad 2: Tutorial sobre Angular.</div>
+    </aside>
+
+    <main class="main-content">
+      <button class="sidebar-toggle" aria-label="Abrir navegación">☰</button>
+      <div class="container page">
+    <h2>3. Primeros pasos</h2>
+    <p>En esta sección veremos cómo iniciar un proyecto básico con Angular, tanto usando CDN como con Angular CLI.</p>
+    <p>Angular es un framework moderno basado en componentes, TypeScript y un sistema de módulos. A continuación tienes los pasos para crear una aplicación mínima.</p>
+
+    <h3>Hola Mundo - enfoque CLI (Angular)</h3>
+    <p>Angular se utiliza principalmente con Angular CLI. Aquí tienes los pasos mínimos para crear un proyecto y levantarlo en local:</p>
+    <pre>npm install -g @angular/cli
+  ng new hola-angular
+  cd hola-angular
+  ng serve
+  # Abrir http://localhost:4200</pre>
+
+    <p>Un proyecto Angular contiene archivos como <code>src/main.ts</code>, <code>src/app/app.module.ts</code> y componentes en <code>src/app/</code>. A continuación tienes un ejemplo mínimo del componente principal.</p>
+
+    <h3>Ejemplo básico de componente (Angular)</h3>
+    <p>Ejemplo del componente raíz en Angular (archivo: <code>src/app/app.component.ts</code> y su template):</p>
+    <pre>&lt;!-- Contenedor en el body --&gt;
+&lt;!-- src/app/app.component.ts --&gt;
+export class AppComponent {
+  title = 'Hola desde Angular';
+  count = 0;
+  increment() { this.count++; }
+}
+
+&lt;!-- src/app/app.component.html --&gt;
+&lt;div&gt;
+  &lt;h3&gt;{{ title }}&lt;/h3&gt;
+  &lt;p&gt;Contador: {{ count }}&lt;/p&gt;
+  &lt;button (click)="increment()"&gt;Aumentar&lt;/button&gt;
+&lt;/div&gt;</pre>
+
+    <p>Este componente muestra un título, un contador y un botón para incrementarlo. Angular usa data binding ({{ }}) y event binding ((click)) para enlazar datos y eventos.</p>
+    <p>El archivo <code>app.module.ts</code> declara el componente y lo arranca:</p>
+    <p>Recuerda que tienes modificar el archivo <code>app.module.ts</code> para declarar el componente:</p>
+    <pre>import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }</pre>
+<p>Con estos archivos mínimos, al ejecutar <code>ng serve</code> y abrir <code>http://localhost:4200</code>, verás la aplicación funcionando.</p>
+
+
+    <p>Más adelante veremos un ejemplo completo ejecutable en la sección <a href="6-hola-mundo.html">6. Hola Mundo</a>.</p>
+
+
+    <div class="nav-links">
+      <a href="2-instalacion.html">Anterior</a>
+      <a href="4-utilizacion.html">Siguiente: Utilización</a>
+    </div>
+      </div>
+    </main>
+  </div>
+  <script src="../scripts.js"></script>
+</body>
+</html>

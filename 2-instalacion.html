@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>2. Instalación - Angular (Angular CLI)</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" aria-label="Navegación del tutorial">
+      <h2>Índice</h2>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="1-justificacion.html">1 — Justificación</a></li>
+          <li><a href="2-instalacion.html">2 — Instalación</a></li>
+          <li><a href="3-primeros-pasos.html">3 — Primeros pasos</a></li>
+          <li><a href="4-utilizacion.html">4 — Utilización</a></li>
+          <li><a href="5-explicacion-funcionamiento.html">5 — Explicación</a></li>
+          <li><a href="6-hola-mundo.html">6 — Hola Mundo</a></li>
+          <li><a href="7-conclusiones.html">7 — Conclusiones</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">Actividad 2: Tutorial sobre Angular.</div>
+    </aside>
+
+    <main class="main-content">
+      <button class="sidebar-toggle" aria-label="Abrir navegación">☰</button>
+      <div class="container page">
+    <img class="page-header-image" src="../Img/descarga.jpg" alt="Instalación Angular" loading="lazy">
+    <h2>2. Instalación</h2>
+    <p>Angular normalmente se utiliza con herramientas oficiales (Angular CLI) y TypeScript. El flujo habitual es crear proyectos con la CLI para desarrollo y despliegue, lo que facilita generación de componentes, pruebas y optimización.</p>
+
+    <h3>a) ¿Se precisa instalación?</h3>
+    <p>Sí. Para usar Angular CLI necesitas Node.js y npm instalados en tu sistema, por si no los tienes aquí te dejamos los enlaces para descargarlos e instalarlos <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">Node.js</a> y <a href="https://www.npmjs.com/get-npm" target="_blank" rel="noopener noreferrer">npm</a>. Angular CLI se instala globalmente con npm y luego se usa para crear y gestionar proyectos Angular.</p>
+    <p>También puedes usar Angular con CDN para pruebas rápidas, pero no es el enfoque recomendado para desarrollo serio.</p>
+
+    <h3>b) Instalación de Node.js y npm</h3>
+    <p>Para instalar Node.js y npm, sigue estos pasos:</p>
+      <ol>
+      <li>Visita la página oficial de Node.js en <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">https://nodejs.org/</a>.</li>
+      <li>Descarga el instalador adecuado para tu sistema operativo (Windows, macOS, Linux).</li>
+      <li>Ejecuta el instalador y sigue las instrucciones en pantalla. Asegúrate de seleccionar la opción para instalar npm junto con Node.js.</li>
+      <li>Una vez completada la instalación, abre una terminal o línea de comandos y verifica que Node.js y npm se hayan instalado correctamente ejecutando los siguientes comandos:
+        <pre>node -v
+npm -v</pre>
+      </li>
+    </ol>
+
+    <h3>c) Pasos para la instalación (Angular CLI)</h3>
+    <pre>npm install -g @angular/cli
+  ng new my-app
+  cd my-app
+  ng serve
+  # Abrir http://localhost:4200</pre>
+
+    <h3>d) Versiones necesarias</h3>
+    <p>Asegúrate de tener una versión LTS de Node.js compatible con Angular CLI (consulta la documentación de Angular para la versión recomendada). npm viene normalmente con Node.js y es necesario para instalar dependencias.</p>
+    <p>Angular CLI se actualiza regularmente, por lo que es recomendable mantenerlo actualizado con <code>npm update -g @angular/cli</code>. También es importante mantener actualizadas las dependencias del proyecto con <code>npm update</code>.</p>
+
+    <h3>e) Rutas y variables</h3>
+    <p>Angular gestiona su configuración en `angular.json` y las variables de entorno en `src/environments/` (p. ej. environment.ts). Los scripts útiles (ng serve, ng build) están en `package.json`. Así puedes personalizar el comportamiento del proyecto y gestionar diferentes entornos (desarrollo, producción).</p>
+    <p>Por ejemplo, puedes definir variables específicas para cada entorno y usar diferentes configuraciones de build.</p>
+
+    <h3>f) ¿Necesita base de datos?</h3>
+    <p>No. Angular es para la capa cliente; la persistencia se realiza en back-end (APIs/servicios). Angular incluye `HttpClient` para consumir APIs y manejar solicitudes HTTP de forma segura.</p>
+    <p>Se recomienda encapsular llamadas a APIs en servicios y gestionar autorización, errores y cache en capas específicas del proyecto.</p>
+
+    <div class="nav-links">
+      <a href="1-justificacion.html">Anterior</a>
+      <a href="3-primeros-pasos.html">Siguiente: Primeros pasos</a>
+    </div>
+      </div>
+    </main>
+  </div>
+  <script src="../scripts.js"></script>
+</body>
+</html>

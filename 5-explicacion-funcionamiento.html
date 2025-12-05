@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>5. Explicación del funcionamiento</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" aria-label="Navegación del tutorial">
+      <h2>Índice</h2>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="1-justificacion.html">1 — Justificación</a></li>
+          <li><a href="2-instalacion.html">2 — Instalación</a></li>
+          <li><a href="3-primeros-pasos.html">3 — Primeros pasos</a></li>
+          <li><a href="4-utilizacion.html">4 — Utilización</a></li>
+          <li><a href="5-explicacion-funcionamiento.html">5 — Explicación</a></li>
+          <li><a href="6-hola-mundo.html">6 — Hola Mundo</a></li>
+          <li><a href="7-conclusiones.html">7 — Conclusiones</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">Actividad 2: Tutorial sobre Angular.</div>
+    </aside>
+
+    <main class="main-content">
+      <button class="sidebar-toggle" aria-label="Abrir navegación">☰</button>
+      <div class="container page">
+    <h2>5. Explicación del funcionamiento de Angular</h2>
+    <p>Angular es un framework completo basado en componentes escritos en TypeScript. Usa un motor de renderizado y un sistema de enlace de datos (data binding) para sincronizar la vista y el modelo.</p>
+    <p>Angular utiliza un sistema de change detection para actualizar la interfaz cuando cambian los datos — combinado con el uso de RxJS para programación reactiva en la gestión de flujos y eventos.</p>
+
+    <h3>a) ¿Actúa sobre páginas, ficheros, secciones...?</h3>
+    <p>Angular actúa sobre el DOM vía plantillas (templates) con binding y directivas. Los componentes se combinan en módulos y el motor de Angular renderiza y actualiza las partes necesarias de la UI.</p>
+    <p>El enfoque modular y el sistema de inyección de dependencias permiten organizar y reutilizar código con claridad en aplicaciones grandes.</p>
+
+    <h3>b) ¿Cómo se editan/modifican los ficheros?</h3>
+    <p>Se editan archivos TypeScript (.ts) y plantillas HTML (.html); Angular CLI y herramientas como Webpack/Vite (si se usa) recompilan y recargan la app en desarrollo.</p>
+    <p>Angular fomenta separar lógica (component.ts), vista (component.html) y estilos (component.css/scss) para mantener el proyecto organizado.</p>
+
+    <h3>c) ¿Cómo se referencian ficheros creados desde otras aplicaciones?</h3>
+    <p>Angular consume APIs REST/GraphQL mediante servicios y HttpClient; se recomienda centralizar la lógica de comunicación en servicios inyectables.</p>
+    <p>También se pueden importar librerías externas y exponer componentes como web components para interoperar con otras tecnologías.</p>
+
+    <div class="nav-links">
+      <a href="4-utilizacion.html">Anterior</a>
+      <a href="6-hola-mundo.html">Siguiente: Hola Mundo</a>
+    </div>
+      </div>
+    </main>
+  </div>
+  <script src="../scripts.js"></script>
+</body>
+</html>

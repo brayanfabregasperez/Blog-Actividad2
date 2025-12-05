@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tutorial: Introducción a Angular - Índice</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-top">
+        <img src="Img/Angular_gradient_logo.png" alt="Angular Logo" class="header-logo" />
+        <div>
+          <h1>Tutorial: Introducción a Angular</h1>
+          <p class="lead">Guía navegable que cubre justificación, instalación, primeros pasos, ejemplos y despliegue para Angular (CLI y flujo moderno). Formato: HTML + CSS + JS y ejemplos CLI.</p>
+        </div>
+        <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Alternar modo oscuro" title="Modo oscuro">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="site-layout">
+    <aside class="sidebar" aria-label="Navegación del tutorial">
+      <h2>Índice</h2>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="pages/1-justificacion.html">1 — Justificación</a></li>
+          <li><a href="pages/2-instalacion.html">2 — Instalación</a></li>
+          <li><a href="pages/3-primeros-pasos.html">3 — Primeros pasos</a></li>
+          <li><a href="pages/4-utilizacion.html">4 — Utilización</a></li>
+          <li><a href="pages/5-explicacion-funcionamiento.html">5 — Explicación</a></li>
+          <li><a href="pages/6-hola-mundo.html">6 — Hola Mundo</a></li>
+          <li><a href="pages/7-conclusiones.html">7 — Conclusiones</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">Actividad 2: Tutorial sobre Angular.</div>
+    </aside>
+
+    <main class="main-content">
+      <button class="sidebar-toggle" aria-label="Abrir navegación">☰</button>
+      <div class="container">
+        <nav class="toc">
+            <div class="hero-image">
+    <img src="Img/curso-angular-20_cuadrado.png" alt="Angular Course" class="hero-img" />
+  </div>
+      <ol>
+        <li><a href="pages/1-justificacion.html">Justificación del framework</a></li>
+        <li><a href="pages/2-instalacion.html">Instalación</a></li>
+        <li><a href="pages/3-primeros-pasos.html">Primeros pasos</a></li>
+        <li><a href="pages/4-utilizacion.html">Utilización del framework</a></li>
+        <li><a href="pages/5-explicacion-funcionamiento.html">Explicación del funcionamiento</a></li>
+        <li><a href="pages/6-hola-mundo.html">Ejemplo: Hola Mundo (Angular CLI)</a></li>
+        <li><a href="pages/7-conclusiones.html">Conclusiones</a></li>
+      </ol>
+    </nav>
+
+      <section class="comments-section">
+        <h2>Comentarios</h2>
+        <div class="comments-form">
+          <form id="comment-form">
+            <div class="form-group">
+              <label for="name">Nombre:</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Correo electrónico:</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="comment">Comentario:</label>
+              <textarea id="comment" name="comment" rows="4" placeholder="Escribe tu comentario aquí..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Enviar comentario</button>
+          </form>
+        </div>
+        <!-- Rating widget: 1-5 estrellas -->
+        <div class="rating-widget" aria-label="Valoración del tutorial">
+          <h3>Valora este tutorial</h3>
+          <div class="rating-controls">
+            <div class="rating-stars" role="radiogroup" aria-label="Selecciona una puntuación de 1 a 5 estrellas">
+              <button type="button" class="star" data-value="1" aria-label="1 estrella" aria-checked="false" role="radio">★</button>
+              <button type="button" class="star" data-value="2" aria-label="2 estrellas" aria-checked="false" role="radio">★</button>
+              <button type="button" class="star" data-value="3" aria-label="3 estrellas" aria-checked="false" role="radio">★</button>
+              <button type="button" class="star" data-value="4" aria-label="4 estrellas" aria-checked="false" role="radio">★</button>
+              <button type="button" class="star" data-value="5" aria-label="5 estrellas" aria-checked="false" role="radio">★</button>
+            </div>
+            <div class="rating-actions">
+              <button type="button" id="submit-rating" class="btn-submit">Enviar valoración</button>
+              <div class="rating-summary" aria-live="polite">
+                <span id="rating-average">—</span>
+                <small id="rating-count">(0 valoraciones)</small>
+              </div>
+            </div>
+          </div>
+          <p class="rating-note">Gracias por tu valoración, ayuda a mejorar el contenido.</p>
+        </div>
+
+        <!-- Comments filter controls -->
+        <div class="comments-filter" style="margin-bottom: 16px;">
+          <label for="sort-comments">Ordenar por:</label>
+          <select id="sort-comments" class="filter-select">
+            <option value="newest">Más recientes primero</option>
+            <option value="oldest">Más antiguos primero</option>
+          </select>
+        </div>
+
+        <div id="comments-list" class="comments-list">
+          <div class="comment">
+            <p class="comment-author"><strong>Usuario:</strong> Los comentarios se mostrarán aquí</p>
+            <p class="comment-text">Los comentarios enviados aparecerán en esta sección.</p>
+          </div>
+        </div>
+      </section>
+
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">Actividad 2: Tutorial sobre Angular.</div>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
